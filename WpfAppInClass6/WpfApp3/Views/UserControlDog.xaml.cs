@@ -15,24 +15,25 @@ using System.Windows.Shapes;
 using WpfApp3.Models;
 using WpfApp3.ViewModels;
 
-namespace WpfApp3
+namespace WpfApp3.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for UserControlDog.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class UserControlDog : UserControl
     {
-        
-        
-        public MainWindow()
+        DogViewModel vm;
+
+        public UserControlDog()
         {
-            
             InitializeComponent();
-            
+            vm = new DogViewModel(new Dog() { Name = "Jerico" });
+            this.DataContext = vm;
         }
 
-        
-
-       
+        protected override void OnInitialized(EventArgs e)
+        {
+            base.OnInitialized(e);
+        }
     }
 }

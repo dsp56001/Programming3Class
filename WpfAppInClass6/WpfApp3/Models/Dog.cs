@@ -28,8 +28,8 @@ namespace WpfApp3.Models
     }
 
     public interface IDog : IBarkable, IEat, IAboutable
-    { 
-    
+    {
+        int Age {  get; set; }
     }
 
     public class Dog : IDog 

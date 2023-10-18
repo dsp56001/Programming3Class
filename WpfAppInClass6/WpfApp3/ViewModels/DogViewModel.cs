@@ -5,13 +5,19 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Input;
 using WpfApp3.Models;
 
 namespace WpfApp3.ViewModels
 {
-    public class DogViewModel : INotifyPropertyChanged
+    public class DogViewModel : BaseViewModel 
     {
-        public Dog dog;
+        public IDog dog;
+
+        public ICommand HappyBirthdayCommand { get; set; }
+        public ICommand EatCommand { get; set; }
+        public ICommand PoopCommand { get; set; }
 
         public string Name
         {   
@@ -51,18 +57,61 @@ namespace WpfApp3.ViewModels
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        
 
-        public DogViewModel(Dog dog) 
-        { 
+        public DogViewModel(IDog dog)
+        {
             this.dog = dog;
+            HappyBirthdayCommand = new BasicCommand(HappyBirthday, HappyBirthDayCanExecute);
+            EatCommand = new BasicCommand(OnEatCommand, EatCommandCanExecute);
+            PoopCommand = new BasicCommand(OnPoopCommand, PoopCommandCanExecute);
         }
 
-        // Create the OnPropertyChanged method to raise the event
-        // The calling member's name will be used as the parameter.
-        protected void RaisePropertyChangedEvent([CallerMemberName] string name = null)
+        private bool PoopCommandCanExecute(object parameter)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+            return true;
+        }
+
+        private void OnPoopCommand(object parameter)
+        {
+            this.dog.Poop();
+            RaisePropertyChangedEvent("Weight");
+        }
+
+        private bool EatCommandCanExecute(object parameter)
+        {
+            return true;
+        }
+
+        private void OnEatCommand(object parameter)
+        {
+            this.dog.Eat();
+            RaisePropertyChangedEvent("Weight");
+        }
+
+        public void HappyBirthday(object sender)
+        {
+            this.dog.Age++;//TODO shoudl defer to dog.HappyBirthday or use Dog IAgable
+            RaisePropertyChangedEvent("Age");
+        }
+
+        public bool HappyBirthDayCanExecute(object sender) 
+        {
+            return true;
+        }
+
+        
+
+        internal void Eat()
+        {
+            this.dog.Eat();
+            RaisePropertyChangedEvent("Weight");
+        }
+
+        internal void Poop()
+        {
+            this.dog.Poop();
+            RaisePropertyChangedEvent("Weight");
         }
     }
 }
