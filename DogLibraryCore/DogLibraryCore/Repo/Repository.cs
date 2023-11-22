@@ -26,11 +26,28 @@ namespace DogLibraryCore
             _repo.Add(entity);
 
         }
+
+        public virtual void Add(ICollection<T> values)
+        {
+            foreach (T item in values)
+            {
+                this.Add(item);
+            }
+        }
         public virtual void Remove(T entity)
         {
             _repo.Add(entity);
 
         }
-        
+
+        public virtual void Remove(ICollection<T> values)
+        {
+            foreach (T item in values)
+            {
+                this.Remove(item);
+            }
+
+        }
+
     }
 }

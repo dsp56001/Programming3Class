@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WpfAppDog.Models;
 using WpfAppDog.ViewModels;
+using WpfAppDogDepend;
 
 namespace UnitTestWpfDog
 {
@@ -15,7 +16,7 @@ namespace UnitTestWpfDog
 
         public ViewModelMammalsTests()
         {
-            vmMammals = new ViewModelMammals();
+            vmMammals = new ViewModelMammals(App.mammals);
         }
 
         [TestMethod]

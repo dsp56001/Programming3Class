@@ -10,6 +10,8 @@ namespace DogLibraryCore
         T GetById(int id);
         IEnumerable<T> List();
         void Add(T entity);
+        
+        void Add(ICollection<T> values);
         void Remove(T entity);
     }
 

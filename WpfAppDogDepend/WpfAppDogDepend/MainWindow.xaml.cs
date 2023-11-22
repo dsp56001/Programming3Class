@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DogLibrary;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,9 +22,12 @@ namespace WpfAppDogDepend
     /// </summary>
     public partial class MainWindow : Window
     {
+        
+        
         public MainWindow()
         {
             InitializeComponent();
+            
         }
 
         private void Dog_Button_Click(object sender, RoutedEventArgs e)

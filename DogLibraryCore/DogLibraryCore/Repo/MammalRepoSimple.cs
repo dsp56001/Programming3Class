@@ -22,6 +22,15 @@ namespace DogLibraryCore
             this.Mammals.Add(mammal);
         }
 
+
+        public virtual void Add(ICollection<IMammal> mammals)
+        {
+            foreach (IMammal item in mammals)
+            {
+                this.Mammals.Add(item);
+            }
+        }
+
         public virtual void Remove(IMammal mammal)
         {
             this.Mammals.Remove(mammal);

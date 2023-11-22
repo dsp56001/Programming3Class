@@ -5,6 +5,7 @@ using DogLibrary;
 using System.Collections.Generic;
 using System.ComponentModel;
 using WpfAppDog.ViewModels;
+using WpfAppDogDepend;
 
 namespace UnitTestWpfDog
 {
@@ -26,8 +27,13 @@ namespace UnitTestWpfDog
             int AgeAfterHappyBirthday = 0;
             List<string> receivedEvents = new List<string>();
 
-            wpfMammal.PropertyChanged += delegate (object sender, PropertyChangedEventArgs e)
+            wpfMammal.PropertyChanged += delegate (object ?sender, PropertyChangedEventArgs e)
             {
+
+                if (e.PropertyName == null)
+                {
+                    Assert.Fail("Property Name is null");
+                }
                 receivedEvents.Add(e.PropertyName);
             };
 
@@ -57,9 +63,13 @@ namespace UnitTestWpfDog
             bool gotEvent = false;
 
             ((INotifyPropertyChanged)vm).PropertyChanged +=
-                delegate (object sender, PropertyChangedEventArgs e)
+                delegate (object ?sender, PropertyChangedEventArgs e)
                 {
                     gotEvent = true;
+                    if(e.PropertyName == null)
+                    {
+                        Assert.Fail("Property Name is null");
+                    }
                     Assert.AreEqual<string>("Name", e.PropertyName);
                 };
 
@@ -81,7 +91,7 @@ namespace UnitTestWpfDog
 
 
             //Act 
-            vm = new ViewModelMammals();
+            vm = new ViewModelMammals(App.mammals);
             
 
 

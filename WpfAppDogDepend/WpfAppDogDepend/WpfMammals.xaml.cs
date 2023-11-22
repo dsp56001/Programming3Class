@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WpfAppDog.ViewModels;
+using WpfAppDogDepend;
 
 namespace WpfAppDog
 {
@@ -27,7 +28,7 @@ namespace WpfAppDog
 
         private void MammalViewControl_Loaded(object sender, RoutedEventArgs e)
         {
-            ViewModelMammals viewControl = new WpfAppDog.ViewModels.ViewModelMammals();
+            ViewModelMammals viewControl = new WpfAppDog.ViewModels.ViewModelMammals(App.mammals);
             viewControl.LoadMammals();
 
 

@@ -6,25 +6,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WpfAppDog.Models;
+using WpfAppDogDepend;
 
 namespace WpfAppDog.ViewModels
 {
     public class ViewModelMammals
     {
 
-        private static ObservableCollection<ViewModelMammal> mammals;
+        
 
         public ObservableCollection<ViewModelMammal> Mammals
         {
-            get { return mammals; }
-            set { mammals = value; }
+            get;
+            set;
+        }
+
+        public ViewModelMammals(ObservableCollection<ViewModelMammal> mammals)
+        {
+            Mammals = mammals;
         }
 
         public void LoadMammals()
         {
-            if (mammals == null)
+            if (Mammals == null)
             {
-                mammals = new ObservableCollection<ViewModelMammal>()
+                Mammals = new ObservableCollection<ViewModelMammal>()
                 {
                     new ViewModelMammal ( new Dog{ BarkSound="woof!", Name="fido"}),
                     new ViewModelMammal ( new Dog{ BarkSound="arf!", Name="rover"}),
@@ -33,7 +39,7 @@ namespace WpfAppDog.ViewModels
                 };
             }
 
-            Mammals = mammals;
+            
         }
     }
 }
