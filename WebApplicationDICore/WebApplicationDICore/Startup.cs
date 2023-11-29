@@ -29,8 +29,8 @@ namespace WebApplicationDICore
             services.AddSingleton<IDog, Dog>();
             
             //Weapons the default weapon is a Katana
-            services.AddScoped<IWeapon, Katana>();
-            services.AddScoped<Weapon, Katana>();
+            services.AddScoped<IWeapon, Sword>();
+            services.AddScoped<Weapon, Sword>();
             
             //The Default Warrior is a Samurai
             services.AddScoped<IWarrior, Samurai>();
