@@ -9,7 +9,7 @@ namespace DogLibrary
     public interface  IMammal : IAboutable
     {
         int Id { get; }
-        int Age { get; }
+        int Age { get; set;  }
         string Name { get; set; }
         string Sound { get; }
         int Weight { get; }

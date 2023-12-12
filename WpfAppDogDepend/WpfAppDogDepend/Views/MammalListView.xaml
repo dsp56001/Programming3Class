@@ -11,8 +11,6 @@
         <StackPanel >
 
             <ItemsControl ItemsSource = "{Binding Path = Mammals}">
-
-                
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation = "Horizontal" x:Name="MammalSP" >

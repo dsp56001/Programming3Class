@@ -17,6 +17,7 @@ namespace WpfAppDog.Models
 
         public ICommand HappyBirthday { get; set; }
 
+        //Constructor dependent on the Model class
         public ViewModelMammal(IMammal mammal)
         {
             this.mammal = mammal;

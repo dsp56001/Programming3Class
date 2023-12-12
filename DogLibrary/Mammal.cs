@@ -17,7 +17,7 @@ namespace DogLibrary
         public int Age
         {
             get;
-            protected set;
+            set;
             
         }
 
